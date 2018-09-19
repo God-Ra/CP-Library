@@ -33,7 +33,7 @@ void dfs(int index, int parent)
                 ++ans;
             }
         }
-        else
+        else if (index != parent)
         {
             minTime[index] = std::min(minTime[index], startTime[next]);
         }
@@ -65,4 +65,5 @@ int main()
     if (rootSize > 1)
         ++ans;
 
-    std::cout << ans:
+    std::cout << ans;
+}

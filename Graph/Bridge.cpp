@@ -13,7 +13,6 @@ void dfs(int index, int parent)
     startTime[index] = cnt;
     minTime[index] = cnt;
     ++cnt;
-    bool flag = false;
 
     for (int i = 0; i < g[index].size(); ++i)
     {
@@ -27,13 +26,12 @@ void dfs(int index, int parent)
 
             minTime[index] = std::min(minTime[index], minTime[next]);
 
-            if (minTime[next] > startTime[index] && !flag && index != 0)
+            if (minTime[next] > startTime[index])
             {
-                flag = true;
                 ++ans;
             }
         }
-        else
+        else if (index != parent)
         {
             minTime[index] = std::min(minTime[index], startTime[next]);
         }
@@ -65,4 +63,5 @@ int main()
     if (rootSize > 1)
         ++ans;
 
-    std::cout << ans:
+    std::cout << ans;
+}
