@@ -1,7 +1,9 @@
 #include <iostream>
 #include <algorithm>
 
-int sums[100010], roots[100010];
+#define MAXN 1000010
+
+int sums[MAXN], roots[MAXN];
 
 void initialize(int n)
 {
@@ -23,15 +25,12 @@ int root(int index)
     return index;
 }
 
-bool checkConnectivity(int a, int b)
+bool areConnected(int a, int b)
 {
-    if (root(a) != root(b))
-        return 1;
-    else
-        return 0;
+    return root(a) == root(b);
 }
 
-int makeUnion(int a, int b)
+void makeUnion(int a, int b)
 {
     a = root(a);
     b = root(b);
@@ -57,7 +56,7 @@ int main()
         --x;
         --y;
 
-        if (checkConnectivity(x, y))
+        if (!areConnected(x, y))
         {
             makeUnion(x, y);
             std::cout << "1";
